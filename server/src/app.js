@@ -4,9 +4,12 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
+const mongoose = require('mongoose');
 const userRouter = require('./api/routes/user');
 const expressValidator = require('express-validator');
 
+mongoose.connect(`mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PW}@ds239117.mlab.com:39117/blog-db`);
+mongoose.Promise = global.Promise;
 
 app.use(morgan('dev'));
 app.use(expressValidator());
