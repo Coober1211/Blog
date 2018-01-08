@@ -13,6 +13,7 @@ mongoose.connect(`mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PW}@ds
 mongoose.Promise = global.Promise;
 
 app.use(morgan('dev'));
+app.use('/uploads', express.static('uploads'));
 app.use(expressValidator());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -25,12 +26,12 @@ app.use('/article', articleRouter);
 app.use((req, res, next) => {
   const err = new Error('Not Found!');
   err.status = 404;
-  next(err);
+  return next(err);
 });
 
 app.use((err, req, res) => {
   res.status(err.status || 500);
-  res.json({
+  return res.json({
     error: {
       message: err.message,
     },

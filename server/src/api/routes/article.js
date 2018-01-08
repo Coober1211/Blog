@@ -6,6 +6,8 @@ const uploadImage = require('../middleware/uploadImage');
 
 const router = express.Router();
 
+router.get('/', catchErrors(articleController.getArticles));
+
 router.post(
   '/',
   checkAuth,
