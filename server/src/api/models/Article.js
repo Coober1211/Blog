@@ -34,7 +34,7 @@ const articleSchema = mongoose.Schema({
       // required: 'You must supply address!',
     },
   },
-  photo: String,
+  Image: String,
 });
 
 articleSchema.pre('save', async function handleSlug(next) {
@@ -43,9 +43,9 @@ articleSchema.pre('save', async function handleSlug(next) {
   }
   this.slug = slug(this.title);
   const slugRegEx = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
-  const storeWithSlug = await this.constructor.find({ slug: slugRegEx });
-  if (storeWithSlug.length) {
-    this.slug = `${this.slug}-${this.storeWithSlug.length + 1}`;
+  const articleWithSlug = await this.constructor.find({ slug: slugRegEx });
+  if (articleWithSlug.length) {
+    this.slug = `${this.slug}-${articleWithSlug.length + 1}`;
   }
   return next();
 });
