@@ -37,7 +37,7 @@ export default {
   left: 0;
   display: grid;
   grid-template-columns: 8fr 4fr;
-  grid-template-areas: ". navbar"
+  grid-template-areas: ". navbar";
 }
 
 .blur {
