@@ -61,5 +61,7 @@ exports.userLogin = async (req, res) => {
       return;
     }
   }
-  res.status(401).json({ message: 'Auth failed' });
+  res.status(401).send({
+    error: 'Auth failed',
+  });
 };
