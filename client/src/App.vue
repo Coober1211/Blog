@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <header-nav></header-nav>
-    <router-view/>
+    <header-nav></header-nav>    
+    <div class="wrapper">
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -17,6 +19,14 @@ export default {
 </script>
 
 <style lang="scss">
-
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #ddd;
+}
+.wrapper {
+  min-height: 90vh;
+  margin-top: 10vh;
+}
 </style>
 

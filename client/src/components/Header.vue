@@ -31,7 +31,7 @@ export default {
 
 #headerNav {
   width: 100%;
-  height: 60px;
+  height: 10vh;
   position: fixed;
   top: 0;
   left: 0;
@@ -56,6 +56,7 @@ nav {
   grid-area: navbar;
   height: 100%;
   display: grid;
+  grid-gap: 10px;
   grid-template-columns: repeat(4, 1fr);
 }
 
@@ -67,7 +68,7 @@ nav div {
 
 #headerNav nav a {
   color: #fff;
-  line-height: 60px;
+  line-height: 10vh;
   margin: 0 auto;
   text-decoration: none;
   letter-spacing: 1px;
