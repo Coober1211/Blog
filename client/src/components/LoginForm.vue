@@ -1,16 +1,18 @@
 <template>
   <div class="login-form">
     <form action="POST">
-      <input type="email" name="email" id="email">
+      <input type="email" name="email" id="email" v-model="email">
       <br>
-      <input type="password" name="password" id="password">
+      <input type="password" name="password" id="password" v-model="password">
       <br>
-      <button @click="login">Login!</button>
+      <button type="submit" @click="login">Login!</button>
     </form>
   </div>
 </template>
 
 <script>
+import AuthService from '@/services/AuthService';
+
 export default {
   name: 'LoginForm',
   data() {
@@ -20,9 +22,18 @@ export default {
     };
   },
   methods: {
-    login() {
-      // eslint-disable-next-line
-      console.log('Hello');
+    async login(e) {
+      e.preventDefault();
+      try {
+        const response = await AuthService.login({
+          email: this.email,
+          password: this.password,
+        });
+        // eslint-disable-next-line
+        console.log(response);
+      } catch (err) {
+        this.error = err;
+      }
     },
   },
 };
