@@ -38,10 +38,10 @@ export default {
           email: this.email,
           password: this.password,
         });
-        // eslint-disable-next-line
-        console.log(response);
+        this.$store.dispatch('setToken', response.data.token);
+        this.$store.dispatch('setUser', response.data.user);
         this.$router.push({
-          name: 'Articles',
+          name: 'Homepage',
         });
       } catch (error) {
         this.error = error.response.data.error;

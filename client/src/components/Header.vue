@@ -1,8 +1,11 @@
 <template>
   <div id="headerNav">
     <div class="blur"></div>
-    <div class="logo">
-      <router-link to="/">Hua's Blog</router-link>
+    <div class="greet">
+      <router-link to="/">
+        <span v-if="$store.state.isUserLoggedIn">Hi! {{$store.state.user.name}}</span>
+        <span v-else>Hua's Blog</span>
+      </router-link>
     </div>
     <nav>
       <div v-for="item in navList" :key="item.key">
@@ -41,7 +44,7 @@ export default {
   left: 0;
   display: grid;
   grid-template-columns: 2fr 6fr 4fr;
-  grid-template-areas: "logo ... navbar";
+  grid-template-areas: "greet ... navbar";
 }
 
 .blur {
@@ -56,11 +59,11 @@ export default {
   left: 0;
 }
 
-.logo {
-  grid-area: logo;
+.greet {
+  grid-area: greet;
 }
 
-.logo a {
+.greet a {
   color: #333;
   height: 100%;  
   font-size: 1.2em;
