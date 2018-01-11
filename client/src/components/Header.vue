@@ -1,6 +1,9 @@
 <template>
   <div id="headerNav">
     <div class="blur"></div>
+    <div class="logo">
+      <router-link to="/">Hua's Blog</router-link>
+    </div>
     <nav>
       <div v-for="item in navList" :key="item.key">
         <router-link :to="item.url">{{item.name}}</router-link>
@@ -32,12 +35,13 @@ export default {
 #headerNav {
   width: 100%;
   height: 10vh;
+  font-family: 'Kaushan Script', cursive;
   position: fixed;
   top: 0;
   left: 0;
   display: grid;
-  grid-template-columns: 8fr 4fr;
-  grid-template-areas: ". navbar";
+  grid-template-columns: 2fr 6fr 4fr;
+  grid-template-areas: "logo ... navbar";
 }
 
 .blur {
@@ -50,6 +54,20 @@ export default {
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+.logo {
+  grid-area: logo;
+}
+
+.logo a {
+  color: #333;
+  height: 100%;  
+  font-size: 1.2em;
+  line-height: 10vh;
+  margin-left: 10px;
+  text-decoration: none;
+  letter-spacing: 1px;
 }
 
 nav {

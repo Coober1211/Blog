@@ -19,10 +19,15 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Concert+One|Kaushan+Script|Ovo');
+
 html, body {
   margin: 0;
   padding: 0;
   background-color: #ddd;
+  // font-family: 'Kaushan Script', cursive;
+  // font-family: 'Concert One', cursive;
+  // font-family: 'Ovo', serif;
 }
 .wrapper {
   min-height: 90vh;
