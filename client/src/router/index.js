@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Articles from '@/components/Articles/Articles';
 import Homepage from '@/components/Homepage/Homepage';
-import LoginForm from '@/components/LoginForm';
+import Admin from '@/components/Admin/Admin';
 
 Vue.use(Router);
 
@@ -20,8 +20,8 @@ export default new Router({
     },
     {
       path: '/admin',
-      name: 'LoginForm',
-      component: LoginForm,
+      name: 'Admin',
+      component: Admin,
     },
   ],
   mode: 'history',

@@ -21,7 +21,7 @@
 import AuthService from '@/services/AuthService';
 
 export default {
-  name: 'LoginForm',
+  name: 'loginForm',
   data() {
     return {
       valid: false,
@@ -60,6 +60,7 @@ export default {
   width: 400px;
   height: 400px;
   transform: translateX(-50%);
+  background-color: #fff;
   box-shadow: 0 0 10px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
 }
 input {

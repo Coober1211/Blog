@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    token: '',
+    token: null,
     user: {},
     isUserLoggedIn: false,
   },
@@ -17,9 +17,12 @@ export default new Vuex.Store({
       } else {
         state.isUserLoggedIn = false;
       }
+      window.localStorage.setItem('access_token', token);
     },
     setUser(state, user) {
       state.user = user;
+      window.localStorage.setItem('userName', user.name);
+      window.localStorage.setItem('userEmail', user.email);
     },
   },
   actions: {

@@ -15,6 +15,17 @@ export default {
   components: {
     headerNav,
   },
+  created() {
+    const token = window.localStorage.getItem('access_token');
+    const user = {
+      name: window.localStorage.getItem('userName'),
+      email: window.localStorage.getItem('userEmail'),
+    };
+    if (token && user) {
+      this.$store.dispatch('setToken', token);
+      this.$store.dispatch('setUser', user);
+    }
+  },
 };
 </script>
 
