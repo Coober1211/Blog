@@ -48,8 +48,8 @@ export default {
 }
 
 .blur {
-  background-color: #171717;
-  opacity: .2;
+  background-color: #0D5661;
+  opacity: .4;
   filter: blur(1px);
   position: absolute;
   z-index: -10;
@@ -64,9 +64,10 @@ export default {
 }
 
 .greet a {
-  color: #333;
+  color: #F7C242;
+  text-shadow: 1px 1px 1px #F7C242;
   height: 100%;  
-  font-size: 1.2em;
+  font-size: 2em;
   line-height: 10vh;
   margin-left: 10px;
   text-decoration: none;
@@ -93,11 +94,11 @@ nav div {
   margin: 0 auto;
   text-decoration: none;
   letter-spacing: 1px;
-  font-size: 1.2em;
+  font-size: 1.4em;
 }
 
-#headerNav nav div:hover {
-  background-color: rgba(23, 23, 23, 0.7);
+#headerNav nav div:hover a{
+  border-bottom: 5px solid #58B2DC;
 }
 
 

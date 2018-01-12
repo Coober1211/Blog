@@ -17,14 +17,13 @@ export default {
   },
   created() {
     const token = window.localStorage.getItem('access_token');
+    if (token === 'null') return;
     const user = {
       name: window.localStorage.getItem('userName'),
       email: window.localStorage.getItem('userEmail'),
     };
-    if (token && user) {
-      this.$store.dispatch('setToken', token);
-      this.$store.dispatch('setUser', user);
-    }
+    this.$store.dispatch('setToken', token);
+    this.$store.dispatch('setUser', user);
   },
 };
 </script>
@@ -35,7 +34,7 @@ export default {
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #ddd;
+  background-color: lighten($color: #58B2DC, $amount: 30);
   // font-family: 'Kaushan Script', cursive;
   // font-family: 'Concert One', cursive;
   // font-family: 'Ovo', serif;
