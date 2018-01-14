@@ -1,13 +1,28 @@
 <template>
   <div class="card">
-    <img src="../../assets/logo.png" alt="">
+    <div class="img-box">
+      <router-link to="#">
+        <img src="../../assets/logo.png" alt="">
+      </router-link>
+    </div>
     <div class="card-info">
       <div class="title">
         <router-link to="#">Coding!</router-link>
       </div>
       <div class="date">2017/12/31</div>
       <div class="description">hello today I will .....</div>
-      <div class="tags">#Vue.js</div>
+      <div class="tags">
+        <div class="tag">
+          <div class="tag--link">            
+            <div class="tag--text">#Vue</div>
+          </div>
+        </div>
+        <div class="tag">
+          <div class="tag--link">            
+            <div class="tag--text">#Code</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>  
 </template>
@@ -24,20 +39,26 @@ export default {
   display: grid;
   background-color: #fff;
   border-radius: 5px;
-}
-
-.card:nth-child(even) {
-  grid-template-columns: 2fr 3fr;
-  grid-template-areas: "image info";
+  box-shadow: 0 0 10px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
 }
 
 .card:nth-child(odd) {
-  grid-template-columns: 3fr 2fr;
-  grid-template-areas: "info image";
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas: "image info";
+  transform: perspective(100px) rotateX(-1deg) translateY(5px);
+  background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
 }
 
-img {
+.card:nth-child(even) {
+  grid-template-columns: 3fr 1fr;
+  grid-template-areas: "info image";
+  transform: perspective(100px) rotateX(1deg) translateY(1px) scale(1.001);
+  background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 100%);
+}
+
+.img-box {
   grid-area: image;
+  user-select: none;
 }
 
 .card-info {
@@ -60,16 +81,21 @@ img {
 }
 
 .title a {
-  background-image: linear-gradient(to right, rgba(255, 196, 14, 0.8) 100%, rgba(255, 196, 14, 0.8) 50%);
+  background-image: linear-gradient(to right, #F7C242 100%, #F7C242 50%);
   border-bottom: 0px;
   text-decoration: none;
-  color: #333;  
+  color: darken($color: #58B2DC, $amount: 10);
 }
 
 .date {
   grid-column: 3;
   grid-row: 3;
   justify-self: end;
+  align-self: end;
+  font-style: italic;
+  opacity: 0.6;
+  padding: 0;
+  border-bottom: 2px solid darken($color: #58B2DC, $amount: 10);
 }
 
 .description {
@@ -81,6 +107,22 @@ img {
   grid-column: 1/4;
   grid-row: 6;
   justify-self: end;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag {
+  display: block;
+  margin-right: 1rem;
+}
+
+.tag--link {
+  background-color: #F7C242;
+  color: darken($color: #58B2DC, $amount: 20);
+  display: flex;
+  padding-left: 10px;
+  clip-path: polygon(10px 0%, 100% 1%, 100% 100%, 10px 100%, 0% 50%);
 }
 
 

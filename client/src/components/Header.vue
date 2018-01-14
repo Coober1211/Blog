@@ -38,12 +38,13 @@ export default {
 #headerNav {
   width: 100%;
   height: 10vh;
+  z-index: 100;
   font-family: 'Kaushan Script', cursive;
   position: fixed;
   top: 0;
   left: 0;
   display: grid;
-  grid-template-columns: 2fr 6fr 4fr;
+  grid-template-columns: 4fr 4fr 4fr;
   grid-template-areas: "greet ... navbar";
 }
 

@@ -1,8 +1,17 @@
 <template>
   <div class="main">
     <search-bar></search-bar>
-    <card></card>
-    <card></card>    
+    <div class="tags-box"></div>
+    <div class="card-box">
+      <card></card>
+      <card></card>
+      <card></card>
+      <card></card>
+      <card></card>
+      <card></card>
+      <card></card>
+      <card></card>      
+    </div>
   </div>
 </template>
 
@@ -32,16 +41,19 @@ export default {
 <style lang="scss" scoped>
 .main {
   display: grid;
-  padding: 30px;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 2fr 6fr 2fr;
+  grid-row-gap: 10px;
+  font-family: 'Ovo', serif;
 }
 
 .searchBar {
   grid-column: 2;
-  justify-self: stretch;
+  max-width: 300px;
+  justify-self: center;
 }
 
-.card {
+.card-box {
   grid-column: 2;
+  user-select: none;
 }
 </style>
