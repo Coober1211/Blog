@@ -26,15 +26,10 @@ export default new Vuex.Store({
       window.localStorage.setItem('userName', user.name);
       window.localStorage.setItem('userEmail', user.email);
     },
-    async getArticles(state) {
-      try {
-        const response = await articleService.getArticles();
-        state.articles = response.data.articles;
-        // eslint-disable-next-line
-        console.log(state.articles);
-      } catch (err) {
-        this.error = err;
-      }
+    setArticles(state, response) {
+      state.articles = response.data.articles;
+      // eslint-disable-next-line
+      console.log(state.articles);
     },
   },
   actions: {
@@ -45,7 +40,14 @@ export default new Vuex.Store({
       commit('setUser', user);
     },
     getArticles({ commit }) {
-      commit('getArticles');
+      return new Promise((reslove, reject) => {
+        articleService.getArticles().then((response) => {
+          commit('setArticles', response);
+          reslove();
+        }, (error) => {
+          reject(error);
+        });
+      });
     },
   },
 });
