@@ -1,0 +1,145 @@
+<template>
+  <div class="main">
+    <div class="post-form">
+      <div class="title">
+        <input type="text" name="title" id="" placeholder="Title">
+      </div>
+      <div class="types">
+        <div class="type" v-for="t in this.types" :key="t.key">
+          <input type="radio" name="type" :id="t" :value="t">
+          <label :for="t">{{t}}</label>     
+        </div> 
+        <h4>choice type</h4>
+      </div>
+      <div class="tags">
+        <div class="tag" v-for="c in this.choices" :key="c.key">
+          <input type="checkbox" name="tags" :id="c" :value="c">          
+          <label :for="c">{{c}}</label>
+        </div>
+        <h4>choice tags</h4>        
+      </div>
+      <div class="editor">
+        <textarea v-model="input" ></textarea>
+        <div v-html="compiledMarkdown"></div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import marked from 'marked';
+
+export default {
+  data() {
+    return {
+      types: ['Coding', 'Design', 'Travel', 'Life'],
+      choices: ['Vue.js', 'D3.js', 'CSS Grid', 'Node.js', 'Express', 'RestFul Api', 'Hong Kong'],
+      input: '# Hello',
+    };
+  },
+  computed: {
+    compiledMarkdown() {
+      return marked(this.input, { sanitize: true });
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.main {
+  display: grid;
+  grid-template-columns: 1fr repeat(4, 2fr) 1fr;
+  font-family: 'Ovo', serif;
+}
+
+.post-form {
+  grid-column: 2/6;
+  margin-top: 10vh;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+}
+
+.title input {
+  border: none;
+  font-size: 20px;
+  background-color: lighten($color: #58B2DC, $amount: 20);
+  font-weight: bold;
+  border-bottom: 2px solid darken($color: #58B2DC, $amount: 20);
+  margin-bottom: 20px;
+  width: 400px;
+  height: 40px;
+}
+
+.tags, .types {
+  margin: 0;
+  position: relative;
+  padding: 0 0 5px 0;
+  border-bottom: darken($color: #58B2DC, $amount: 20) solid 1px;
+  list-style: none;
+  display: flex;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.tags h4, .types h4 {
+  margin: 0;
+  color: darken($color: #58B2DC, $amount: 20);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.tag, .type {
+  display: block;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tag input, .type input {
+  width: auto;
+  right: -1.5rem;
+  margin-right: -1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.tag label, .type label {
+  background: #ccc;
+  padding: 1rem 1rem 1rem 4rem;
+}
+
+.tag input:checked + label, .type input:checked + label{
+  background-color: #F7C242;
+}
+
+textarea, .editor div {
+  display: inline-block;
+  width: 49%;
+  height: 100%;
+  vertical-align: top;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+
+textarea {
+  border: none;
+  resize: vertical;
+  outline: none;
+  background-color: lighten($color: #58B2DC, $amount: 20);
+  font-size: 14px;
+  // font-family: 'Monaco', courier, monospace;
+  padding: 20px;
+}
+
+code {
+  color: #f66;
+}
+</style>
+
+

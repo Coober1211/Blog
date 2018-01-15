@@ -9,7 +9,7 @@
     </div>
     <nav>
       <div v-for="item in navList" :key="item.key">
-        <router-link :to="item.url">{{item.name}}</router-link>
+        <router-link :to="{name: item.url}">{{item.name}}</router-link>
       </div>
     </nav>
   </div>
@@ -22,10 +22,10 @@ export default {
   data() {
     return {
       navList: [
-        { name: 'About', url: '#' },
-        { name: 'Articles', url: 'articles' },
-        { name: 'Projects', url: '#' },
-        { name: 'Connect', url: '#' },
+        { name: 'About', url: 'Homepage' },
+        { name: 'Articles', url: 'Articles' },
+        { name: 'Projects', url: 'Homepage' },
+        { name: 'Connect', url: 'Homepage' },
       ],
     };
   },

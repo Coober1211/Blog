@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <search-bar></search-bar>
+    <!-- <search-bar></search-bar> -->
     <div class="tags-box"></div>
     <cards></cards>
   </div>
@@ -15,8 +15,13 @@ export default {
     cards,
     searchBar,
   },
-  async created() {
-    this.$store.dispatch('getArticles');
+  created() {
+    this.fetchArticles();
+  },
+  methods: {
+    fetchArticles() {
+      this.$store.dispatch('getArticles');
+    },
   },
 };
 </script>
