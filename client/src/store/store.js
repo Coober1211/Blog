@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import articleService from '@/services/AticleService';
 
 Vue.use(Vuex);
 
@@ -8,6 +9,7 @@ export default new Vuex.Store({
     token: null,
     user: {},
     isUserLoggedIn: false,
+    articles: [],
   },
   mutations: {
     setToken(state, token) {
@@ -24,6 +26,16 @@ export default new Vuex.Store({
       window.localStorage.setItem('userName', user.name);
       window.localStorage.setItem('userEmail', user.email);
     },
+    async getArticles(state) {
+      try {
+        const response = await articleService.getArticles();
+        state.articles = response.data.articles;
+        // eslint-disable-next-line
+        console.log(state.articles);
+      } catch (err) {
+        this.error = err;
+      }
+    },
   },
   actions: {
     setToken({ commit }, token) {
@@ -31,6 +43,9 @@ export default new Vuex.Store({
     },
     setUser({ commit }, user) {
       commit('setUser', user);
+    },
+    getArticles({ commit }) {
+      commit('getArticles');
     },
   },
 });

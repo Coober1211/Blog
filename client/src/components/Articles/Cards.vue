@@ -1,36 +1,43 @@
 <template>
-  <div class="card">
-    <div class="img-box">
-      <router-link to="#">
-        <img src="../../assets/logo.png" alt="">
-      </router-link>
-    </div>
-    <div class="card-info">
-      <div class="title">
-        <router-link to="#">Coding!</router-link>
+  <div class="cards">
+    <div class="card" v-for="a in $store.state.articles" :key="a.key">
+      <div class="img-box">
+        <router-link :to="a.slug" append>
+          <img src="../../assets/logo.png" alt="">
+        </router-link>
       </div>
-      <div class="date">2017/12/31</div>
-      <div class="description">hello today I will .....</div>
-      <div class="tags">
-        <div class="tag">
-          <div class="tag--link">            
-            <div class="tag--text">#Vue</div>
+      <div class="card-info">
+        <div class="title">
+          <router-link :to="a.slug" append>{{a.title}}</router-link>
+        </div>
+        <div class="date">{{handleTime(a.created)}}</div>
+        <div class="description">hello today I will .....</div>
+        <div class="tags">
+          <div class="tag">
+            <div class="tag--link">            
+              <div class="tag--text">#Vue</div>
+            </div>
+          </div>
+          <div class="tag">
+            <div class="tag--link">            
+              <div class="tag--text">#Code</div>
+            </div>
           </div>
         </div>
-        <div class="tag">
-          <div class="tag--link">            
-            <div class="tag--text">#Code</div>
-          </div>
-        </div>
       </div>
     </div>
-  </div>  
+  </div>
 </template>
 
 
 <script>
 export default {
-  name: 'card',
+  name: 'cards',
+  methods: {
+    handleTime(time) {
+      return time.split('T')[0];
+    },
+  },
 };
 </script>
 

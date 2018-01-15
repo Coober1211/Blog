@@ -2,39 +2,22 @@
   <div class="main">
     <search-bar></search-bar>
     <div class="tags-box"></div>
-    <div class="card-box">
-      <card></card>
-      <card></card>
-      <card></card>
-      <card></card>
-      <card></card>
-      <card></card>
-      <card></card>
-      <card></card>      
-    </div>
+    <cards></cards>
   </div>
 </template>
 
 <script>
-// import articleService from '@/services/AticleService';
-import card from './Card';
+import cards from './Cards';
 import searchBar from './SearchBar';
 
 export default {
   components: {
-    card,
+    cards,
     searchBar,
   },
-  // async created() {
-  //   try {
-  //     const response = await articleService.getArticles();
-  //     const articles = response.data.articles;
-  //     // eslint-disable-next-line
-  //     console.log(articles);
-  //   } catch (err) {
-  //     this.error = err;
-  //   }
-  // },
+  async created() {
+    this.$store.dispatch('getArticles');
+  },
 };
 </script>
 
@@ -52,7 +35,7 @@ export default {
   justify-self: center;
 }
 
-.card-box {
+.cards {
   grid-column: 2;
   user-select: none;
 }
