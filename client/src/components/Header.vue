@@ -9,7 +9,7 @@
     </div>
     <nav>
       <div v-for="item in navList" :key="item.key">
-        <router-link :to="{name: item.url}">{{item.name}}</router-link>
+        <router-link :to="{path: item.url}">{{item.name}}</router-link>
       </div>
     </nav>
   </div>
@@ -22,10 +22,9 @@ export default {
   data() {
     return {
       navList: [
-        { name: 'About', url: 'Homepage' },
-        { name: 'Articles', url: 'Articles' },
-        { name: 'Projects', url: 'Homepage' },
-        { name: 'Connect', url: 'Homepage' },
+        { name: 'About', url: '/' },
+        { name: 'Articles', url: '/articles' },
+        // { name: 'Projects', url: '/' },
       ],
     };
   },
@@ -44,7 +43,7 @@ export default {
   top: 0;
   left: 0;
   display: grid;
-  grid-template-columns: 4fr 4fr 4fr;
+  grid-template-columns: 4fr 6fr 2fr;
   grid-template-areas: "greet ... navbar";
 }
 
@@ -78,13 +77,11 @@ export default {
 nav {
   grid-area: navbar;
   height: 100%;
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  justify-content: space-around;
 }
 
 nav div {
-  float: left;
   height: 100%;
   text-align: center;
 }
