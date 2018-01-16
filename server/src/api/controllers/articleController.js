@@ -11,13 +11,18 @@ exports.getArticles = async (req, res) => {
 };
 
 exports.createArticle = async (req, res) => {
-  const { title } = req.body;
-  const { content } = req.body;
-  const Image = req.file.path || '';
+  const {
+    title, content, type, tags,
+  } = req.body;
+  // eslint-disable-next-line
+  // console.log(title, content, type, tags);
+  const Image = (req.file && req.file.path) || '';
   const article = await new Article({
     _id: new mongoose.Types.ObjectId(),
     title,
     content,
+    type,
+    tags,
     Image,
   }).save();
   res.status(200).json({ article });

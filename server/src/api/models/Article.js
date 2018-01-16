@@ -13,6 +13,7 @@ const articleSchema = mongoose.Schema({
     required: 'You must supply content!',
   },
   slug: String,
+  type: String,
   tags: [String],
   created: {
     type: Date,
