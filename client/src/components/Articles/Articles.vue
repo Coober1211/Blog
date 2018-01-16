@@ -20,7 +20,10 @@ export default {
   },
   methods: {
     fetchArticles() {
-      this.$store.dispatch('getArticles');
+      const articles = this.$store.state.articles;
+      if (articles.length === 0) {
+        this.$store.dispatch('getArticles');
+      }
     },
   },
 };

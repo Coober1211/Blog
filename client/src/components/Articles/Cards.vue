@@ -13,14 +13,9 @@
         <div class="date">{{handleTime(a.created)}}</div>
         <div class="description">hello today I will .....</div>
         <div class="tags">
-          <div class="tag">
+          <div class="tag" v-for="tag in a.tags" :key="tag.key">
             <div class="tag--link">            
-              <div class="tag--text">#Vue</div>
-            </div>
-          </div>
-          <div class="tag">
-            <div class="tag--link">            
-              <div class="tag--text">#Code</div>
+              <div class="tag--text">#{{tag}}</div>
             </div>
           </div>
         </div>
