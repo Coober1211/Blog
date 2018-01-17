@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import homeAni from '../modules/homeAni';
+import homeAni from '../../assets/javascripts/homeAni';
 
 export default {
   name: 'Homepage',
@@ -96,7 +96,7 @@ div.hero {
 }
 
 div.hero-image {
-  background: url(../../assets/ocean_big.jpg);
+  background: url(../../assets/image/ocean_big.jpg);
   filter: blur(3px);
   -webkit-filter: blur(3px);
   -webkit-background-size: cover;

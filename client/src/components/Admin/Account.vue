@@ -1,6 +1,7 @@
 <template>
   <div class="main">
     <h2>Welcome back, {{$store.state.user.name}}!</h2>
+    <button type="submit" @click="goToPost">Post Article!</button>
     <button type="submit" @click="logout">Logout -></button>
   </div>
   
@@ -14,6 +15,12 @@ export default {
     logout() {
       this.$store.dispatch('setToken', null);
       this.$store.dispatch('setUser', {});
+    },
+    goToPost(e) {
+      e.preventDefault();
+      this.$router.push({
+        name: 'PostForm',
+      });
     },
   },
 };

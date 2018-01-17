@@ -3,7 +3,7 @@
     <div class="card" v-for="a in $store.state.articles" :key="a.key">
       <div class="img-box">
         <router-link :to="a.slug" append>
-          <img src="../../assets/coding.jpg" alt="">
+          <div :class="a.type" id="img"></div>
         </router-link>
       </div>
       <div class="card-info">
@@ -65,12 +65,19 @@ export default {
   user-select: none;
 }
 
-img {
-  width: 100%;
+#img {
+  width: 190px;
+  height: 100px;
+  border-radius: 3px;
   opacity: 0.7;
+  background-size: cover;
 }
 
-.card:hover img {
+.Coding {
+  background-image: url(../../assets/image/coding.jpg);
+}
+
+.card:hover #img {
   opacity: 1;
 }
 

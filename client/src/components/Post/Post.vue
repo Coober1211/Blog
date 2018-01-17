@@ -57,8 +57,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../assets/style/content.scss';
+
 .main {
   display: grid;
+  min-height: 130vh;
   grid-template-columns: 1fr repeat(4, 2fr) 1fr;
   font-family: 'Ovo', serif;
 }
@@ -69,7 +72,7 @@ export default {
 
 .title {
   grid-column: 2/5;
-  font-size: 100px;
+  font-size: 80px;
   letter-spacing: 1px;
   transform: skew(0deg, -3deg);
   font-weight: bold;
@@ -120,6 +123,7 @@ export default {
 
 .post-content {
   grid-column: 2/6;
+  padding: 20px;
 }
 
 </style>

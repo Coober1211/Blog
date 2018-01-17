@@ -15,13 +15,18 @@ export default {
 #hero-image {
   background-position: center;
   background-size: cover;
-  min-height: 300px;
+  min-height: 200px;
+  border-radius: 3px;
   opacity: 0.8;
   z-index: 50;
 }
 
+.hero {
+  background-color: lighten($color: #58B2DC, $amount: 0);  
+}
+
 .Coding {
-  background-image: url(../../assets/coding.jpg);
+  background-image: url(../../assets/image/coding.jpg);
 }
 </style>
 

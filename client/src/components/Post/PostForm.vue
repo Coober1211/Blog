@@ -22,7 +22,7 @@
         <textarea name="abstract" id="" cols="40" rows="3" placeholder="Abstract"></textarea>
       </div>
       <button type="submit" @click="submitPost">Post it!</button>
-      <div class="editor">
+      <div class="editor post-content">
         <textarea v-model="content" ></textarea>
         <div v-html="compiledMarkdown"></div>
       </div>
@@ -32,7 +32,7 @@
 
 <script>
 import marked from 'marked';
-import { $, $$ } from '../modules/bling';
+import { $, $$ } from '../../assets/javascripts/bling';
 import ArticleService from '../../services/AticleService';
 
 export default {
@@ -49,7 +49,7 @@ export default {
     },
   },
   methods: {
-    submitPost(e) {
+    async submitPost(e) {
       e.preventDefault();
       const article = {
         title: $('input[name=title]').value,
@@ -58,17 +58,25 @@ export default {
         tags: $$('input[name=tags]').filter(input => input.checked === true).map(input => input.value),
         content: this.content,
       };
-      // eslint-disable-next-line
-      console.log(article);
-      ArticleService.createArticle(article);
+      try {
+        await ArticleService.createArticle(article);
+        this.$router.push({
+          name: 'Articles',
+        });
+      } catch (error) {
+        this.error = error.response.data.error;
+      }
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+@import '../../assets/style/content.scss';
+
 .main {
   display: grid;
+  min-height: 130vh;
   grid-template-columns: 1fr repeat(4, 2fr) 1fr;
   font-family: 'Ovo', serif;
 }
@@ -174,7 +182,7 @@ textarea {
   resize: vertical;
   outline: none;
   background-color: lighten($color: #58B2DC, $amount: 20);
-  font-size: 14px;
+  font-size: 1em;
   // font-family: 'Monaco', courier, monospace;
   padding: 20px;
 }
