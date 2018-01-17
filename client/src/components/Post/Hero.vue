@@ -20,7 +20,7 @@ export default {
   z-index: 50;
 }
 
-.coding {
+.Coding {
   background-image: url(../../assets/coding.jpg);
 }
 </style>

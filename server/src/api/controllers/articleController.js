@@ -12,7 +12,7 @@ exports.getArticles = async (req, res) => {
 
 exports.createArticle = async (req, res) => {
   const {
-    title, content, type, tags,
+    title, content, type, tags, abstract,
   } = req.body;
   // eslint-disable-next-line
   // console.log(title, content, type, tags);
@@ -23,6 +23,7 @@ exports.createArticle = async (req, res) => {
     content,
     type,
     tags,
+    abstract,
     Image,
   }).save();
   res.status(200).json({ article });

@@ -11,7 +11,7 @@
           <router-link :to="a.slug" append>{{a.title}}</router-link>
         </div>
         <div class="date">{{handleTime(a.created)}}</div>
-        <div class="description">hello today I will .....</div>
+        <div class="description">{{a.abstract}}</div>
         <div class="tags">
           <div class="tag" v-for="tag in a.tags" :key="tag.key">
             <div class="tag--link">            

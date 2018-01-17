@@ -14,6 +14,7 @@ const articleSchema = mongoose.Schema({
   },
   slug: String,
   type: String,
+  abstract: String,
   tags: [String],
   created: {
     type: Date,
