@@ -18,8 +18,12 @@
         </div>
         <h4>choice tags</h4>        
       </div>
+      <div class="abstract">
+        <textarea name="abstract" id="" cols="40" rows="3" placeholder="Abstract"></textarea>
+      </div>
+      <button type="submit" @click="submitPost">Post it!</button>
       <div class="editor">
-        <textarea v-model="input" ></textarea>
+        <textarea v-model="content" ></textarea>
         <div v-html="compiledMarkdown"></div>
       </div>
     </div>
@@ -28,18 +32,35 @@
 
 <script>
 import marked from 'marked';
+import { $, $$ } from '../modules/bling';
+import ArticleService from '../../services/AticleService';
 
 export default {
   data() {
     return {
       types: ['Coding', 'Design', 'Travel', 'Life'],
       choices: ['Vue.js', 'D3.js', 'CSS Grid', 'Node.js', 'Express', 'RestFul Api', 'Hong Kong'],
-      input: '# Hello',
+      content: '# Hello',
     };
   },
   computed: {
     compiledMarkdown() {
-      return marked(this.input, { sanitize: true });
+      return marked(this.content, { sanitize: true });
+    },
+  },
+  methods: {
+    submitPost(e) {
+      e.preventDefault();
+      const article = {
+        title: $('input[name=title]').value,
+        type: $('input[name=type]').value,
+        abstract: $('textarea[name=abstract]').value,
+        tags: $$('input[name=tags]').filter(input => input.checked === true).map(input => input.value),
+        content: this.content,
+      };
+      // eslint-disable-next-line
+      console.log(article);
+      ArticleService.createArticle(article);
     },
   },
 };
@@ -57,7 +78,7 @@ export default {
   margin-top: 10vh;
 }
 
-.title {
+.title, .abstract {
   display: flex;
   justify-content: center;
 }
@@ -116,6 +137,27 @@ export default {
 
 .tag input:checked + label, .type input:checked + label{
   background-color: #F7C242;
+}
+
+.abstract textarea {
+  resize: none;
+  font-size: 16px;
+}
+
+button {
+  width: 30%;
+  height: 50px;
+  margin: 20px 0 20px 50%;
+  transform: translateX(-50%);
+  border-radius: 3%;
+  border: solid 2px #58B2DC;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #58B2DC
 }
 
 textarea, .editor div {
