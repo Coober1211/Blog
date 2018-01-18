@@ -24,7 +24,7 @@ export default {
   data() {
     return {
       navList: [
-        { name: 'About', url: '/' },
+        { name: 'About', url: '/about' },
         { name: 'Articles', url: '/articles' },
         // { name: 'Projects', url: '/' },
       ],

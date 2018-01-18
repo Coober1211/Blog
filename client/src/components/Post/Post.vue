@@ -57,7 +57,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../assets/style/content.scss';
+@import '../../assets/style/main.scss';
 
 .main {
   display: grid;

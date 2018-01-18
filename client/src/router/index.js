@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Articles from '@/components/Articles/Articles';
+import About from '@/components/About/About';
 import Post from '@/components/Post/Post';
 import PostForm from '@/components/Post/PostForm';
 import Homepage from '@/components/Homepage/Homepage';
@@ -14,6 +15,11 @@ export default new Router({
       path: '/',
       name: 'Homepage',
       component: Homepage,
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: About,
     },
     {
       path: '/articles',

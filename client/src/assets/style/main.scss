@@ -1,0 +1,25 @@
+@import url(https://fonts.googleapis.com/earlyaccess/cwtexkai.css);
+@import url('https://fonts.googleapis.com/css?family=Concert+One|Kaushan+Script|Ovo');
+
+.post-content {
+  font-size: 1.8em;
+  font-family: 'Ovo', serif;
+  // font-family: ‘cwTeXKai’, serif;
+}
+
+.btn__center {
+  width: 30%;
+  height: 50px;
+  margin: 20px 0 20px 50%;
+  transform: translateX(-50%);
+  border-radius: 3%;
+  text-align: center;
+  border: solid 2px #58B2DC;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn__center:hover {
+  background-color: #58B2DC
+}
