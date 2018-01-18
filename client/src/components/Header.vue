@@ -2,9 +2,11 @@
   <div id="headerNav">
     <div class="blur"></div>
     <div class="greet">
-      <router-link to="/">
-        <span v-if="$store.state.isUserLoggedIn">Hi! {{$store.state.user.name}}</span>
-        <span v-else>Hua's Blog</span>
+      <router-link to="admin" v-if="$store.state.isUserLoggedIn">
+        <span >Hi! {{$store.state.user.name}}</span>
+      </router-link>
+      <router-link to="/" v-else>
+        <span>Hua's Blog</span>
       </router-link>
     </div>
     <nav>
