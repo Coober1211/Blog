@@ -24,10 +24,6 @@ export default {
 .hero {
   background-color: lighten($color: #58B2DC, $amount: 0);  
 }
-
-.Coding {
-  background-image: url(../../assets/image/coding.jpg);
-}
 </style>
 
 

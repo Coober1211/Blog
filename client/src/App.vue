@@ -30,6 +30,8 @@ export default {
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Concert+One|Kaushan+Script|Ovo');
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+@import './assets/style/main.scss';
 
 html, body {
   margin: 0;

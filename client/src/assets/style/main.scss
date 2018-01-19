@@ -23,3 +23,32 @@
 .btn__center:hover {
   background-color: #58B2DC
 }
+
+.Coding {
+  background-image: url(assets/image/coding.jpg);
+}
+
+.Design {
+  background-image: url(assets/image/design.jpg);
+}
+
+.Life {
+  background-image: url(assets/image/life.jpg);
+}
+
+.Travel {
+  background-image: url(assets/image/travel.jpg);
+}
+
+
+.no-select {
+  cursor: default;
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Likely future */
+}

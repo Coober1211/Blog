@@ -73,10 +73,6 @@ export default {
   background-size: cover;
 }
 
-.Coding {
-  background-image: url(../../assets/image/coding.jpg);
-}
-
 .card:hover #img {
   opacity: 1;
 }

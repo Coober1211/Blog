@@ -17,8 +17,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
-
 .info {
   display: flex;
   flex-direction: column;
