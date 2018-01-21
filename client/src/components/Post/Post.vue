@@ -60,7 +60,7 @@ export default {
 .main {
   display: grid;
   min-height: 130vh;
-  grid-template-columns: 1fr repeat(4, 2fr) 1fr;
+  grid-template-columns: repeat(6, 2fr);
   font-family: 'Ovo', serif;
 }
 

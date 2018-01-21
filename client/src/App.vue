@@ -36,7 +36,7 @@ export default {
 html, body {
   margin: 0;
   padding: 0;
-  background-color: lighten($color: #58B2DC, $amount: 30);
+  background-color: lighten($color: $blue, $amount: 30);
   // font-family: 'Kaushan Script', cursive;
   // font-family: 'Concert One', cursive;
   // font-family: 'Ovo', serif;
