@@ -1,6 +1,7 @@
 <template>
   <div class="info">
     <div class="photo"></div>
+    <h2>Tzu Hua Liao</h2>
     <div align="center" class="socialbtns">
       <ul>
         <li><a href="https://github.com/Coober1211" target="_blank" class="fa fa-lg fa-github"></a></li>
@@ -33,6 +34,14 @@ export default {
   border: solid 2px #58B2DC;
   opacity: 0.9;
   border-radius: 50%;
+}
+
+h2 {
+  display: inline-block;
+  margin-left: 50%;
+  margin-bottom: 0;
+  transform: translateX(-45%);
+  color: #F7C242;
 }
 
 a, a:hover {

@@ -1,7 +1,13 @@
 <template>
-  <div class="main">
+  <div class="main no-select">
     <div class="sidebar">
-      <info></info>      
+      <info></info>
+      <div class="skill">
+        <div class="title">
+          <h1>By the way, I can...</h1>
+        </div>
+        <skill-list></skill-list>
+      </div>
     </div>
     <div class="content">
       <div class="title">
@@ -22,12 +28,14 @@
 <script>
 import info from './Info';
 import description from './Description';
+import skillList from './SkillList';
 
 export default {
   name: 'About',
   components: {
     info,
     description,
+    skillList,
   },
   data() {
     return {
@@ -46,20 +54,26 @@ export default {
   height: 80vh;
   display: grid;
   grid-template-columns: 1fr 3fr;
+  grid-column-gap: 20px;
 }
 
 .sidebar {
   grid-column: 1;
 }
 
+.skill {
+  text-align: center;
+}
+
 .content {
   grid-column: 2;
 }
 
-.content .title {
+.title {
   font-family: 'Kaushan Script', cursive;
-  color: #F7C242;
-  text-shadow: 1px 1px #ccc;
+  color: #58B2DC;
+  text-shadow: 1px 1px #FFF;
+  letter-spacing: 1px;
 }
 </style>
 
