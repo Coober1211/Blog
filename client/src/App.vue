@@ -16,14 +16,28 @@ export default {
     headerNav,
   },
   created() {
-    const token = window.localStorage.getItem('access_token');
-    if (token === 'null') return;
-    const user = {
-      name: window.localStorage.getItem('userName'),
-      email: window.localStorage.getItem('userEmail'),
-    };
-    this.$store.dispatch('setToken', token);
-    this.$store.dispatch('setUser', user);
+    this.checkUser();
+  },
+  methods: {
+    checkUser() {
+      const token = window.localStorage.getItem('access_token');
+      const loginTime = window.localStorage.getItem('loginTime');
+      const time = Math.abs(new Date().getHours() - parseInt(loginTime, 10));
+      if (token === 'null') return;
+      if (time > 3) {
+        this.$store.dispatch('setToken', null);
+        this.$store.dispatch('setUser', {});
+        this.$store.dispatch('setLoginTime', null);
+      } else {
+        const user = {
+          name: window.localStorage.getItem('userName'),
+          email: window.localStorage.getItem('userEmail'),
+        };
+        this.$store.dispatch('setToken', token);
+        this.$store.dispatch('setUser', user);
+        this.$store.dispatch('setLoginTime', loginTime);
+      }
+    },
   },
 };
 </script>

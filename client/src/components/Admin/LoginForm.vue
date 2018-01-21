@@ -40,6 +40,7 @@ export default {
         });
         this.$store.dispatch('setToken', response.data.token);
         this.$store.dispatch('setUser', response.data.user);
+        this.$store.dispatch('setLoginTime', response.data.loginTime);
         this.$router.push({
           name: 'Homepage',
         });

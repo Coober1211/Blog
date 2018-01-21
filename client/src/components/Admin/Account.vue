@@ -15,6 +15,7 @@ export default {
     logout() {
       this.$store.dispatch('setToken', null);
       this.$store.dispatch('setUser', {});
+      this.$store.dispatch('setLoginTime', null);
     },
     goToPost(e) {
       e.preventDefault();

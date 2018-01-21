@@ -7,6 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     token: null,
+    loginTime: null,
     user: {},
     isUserLoggedIn: false,
     articles: [],
@@ -26,6 +27,10 @@ export default new Vuex.Store({
       window.localStorage.setItem('userName', user.name);
       window.localStorage.setItem('userEmail', user.email);
     },
+    setLoginTime(state, loginTime) {
+      state.loginTime = loginTime;
+      window.localStorage.setItem('loginTime', loginTime);
+    },
     setArticles(state, response) {
       state.articles = response.data.articles;
       // eslint-disable-next-line
@@ -38,6 +43,9 @@ export default new Vuex.Store({
     },
     setUser({ commit }, user) {
       commit('setUser', user);
+    },
+    setLoginTime({ commit }, loginTime) {
+      commit('setLoginTime', loginTime);
     },
     getArticles({ commit }) {
       return new Promise((reslove, reject) => {
