@@ -26,10 +26,14 @@ exports.validateRegister = async (req, res, next) => {
 
 
 exports.createUser = async (req, res, next) => {
-  const { email } = req.body;
+  const { email, secret } = req.body;
+  if (secret !== process.env.ADMIN_PW) {
+    res.status(401).json({ message: 'sign up fail' });
+    return;
+  }
   const emailExist = await User.find({ email });
   if (emailExist.length > 0) {
-    res.status(409).json({ message: 'Email exists' });
+    res.status(409).json({ message: 'sign up fail' });
     return;
   }
   const hash = await bcrypt.hash(req.body.password, 10);
