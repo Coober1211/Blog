@@ -3,10 +3,10 @@
     <div class="sidebar">
       <info></info>
       <div class="skill">
-        <div class="title">
+        <!-- <div class="title">
           <h1>By the way, I can...</h1>
-        </div>
-        <skill-list></skill-list>
+        </div> -->
+        <!-- <skill-list></skill-list> -->
       </div>
     </div>
     <div class="content">
@@ -18,9 +18,9 @@
         <h1>About Me</h1>
       </div>
       <description :content="aboutMe"></description>
-      <div class="title">
+      <!-- <div class="title">
         <h1>Experience</h1>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
