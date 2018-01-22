@@ -96,7 +96,7 @@ div.hero {
 }
 
 div.hero-image {
-  background: url(../../assets/image/ocean_big.jpg);
+  background: url(../../assets/image/ocean.jpg);
   filter: blur(3px);
   -webkit-filter: blur(3px);
   -webkit-background-size: cover;
