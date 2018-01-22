@@ -8,10 +8,14 @@ const mongoose = require('mongoose');
 const expressValidator = require('express-validator');
 const userRouter = require('./api/routes/user');
 const articleRouter = require('./api/routes/article');
+const serveStatic = require('serve-static');
+const history = require('connect-history-api-fallback');
 
 mongoose.connect(`mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PW}@ds239117.mlab.com:39117/blog-db`);
 mongoose.Promise = global.Promise;
 
+app.use(history());
+app.use(serveStatic('../client/dist'));
 app.use(morgan('dev'));
 app.use('/uploads', express.static('uploads'));
 app.use(expressValidator());
