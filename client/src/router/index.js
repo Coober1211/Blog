@@ -32,6 +32,11 @@ export default new Router({
       component: Post,
     },
     {
+      path: '/articles/edit/:slug',
+      name: 'Edit',
+      component: PostForm,
+    },
+    {
       path: '/postform',
       name: 'PostForm',
       component: PostForm,

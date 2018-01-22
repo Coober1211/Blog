@@ -2,28 +2,28 @@
   <div class="main">
     <div class="post-form">
       <div class="title">
-        <input type="text" name="title" id="" placeholder="Title">
+        <input type="text" name="title" id="" placeholder="Title" :value="post.title">
       </div>
       <div class="types">
         <div class="type" v-for="t in this.types" :key="t.key">
-          <input type="radio" name="type" :id="t" :value="t">
-          <label :for="t">{{t}}</label>     
+          <input type="radio" name="type" :id="t" :value="t" :checked="post.type===t">
+          <label :for="t">{{t}}</label>
         </div> 
         <h4>choice type</h4>
       </div>
       <div class="tags">
         <div class="tag" v-for="c in this.choices" :key="c.key">
-          <input type="checkbox" name="tags" :id="c" :value="c">          
+          <input type="checkbox" name="tags" :id="c" :value="c" :checked="post.tags.includes(c)">          
           <label :for="c">{{c}}</label>
         </div>
         <h4>choice tags</h4>        
       </div>
       <div class="abstract">
-        <textarea name="abstract" id="" cols="40" rows="3" placeholder="Abstract"></textarea>
+        <textarea name="abstract" id="" cols="40" rows="3" placeholder="Abstract" v-model="post.abstract"></textarea>
       </div>
       <button type="submit" @click="submitPost">Post it!</button>
       <div class="editor post-content">
-        <textarea v-model="content" ></textarea>
+        <textarea v-model="post.content" ></textarea>
         <div v-html="compiledMarkdown"></div>
       </div>
     </div>
@@ -38,34 +38,61 @@ import ArticleService from '../../services/AticleService';
 export default {
   data() {
     return {
+      post: {
+        title: '',
+        type: '',
+        tags: [],
+        abstract: '',
+        content: '# Hello',
+      },
       types: ['Coding', 'Design', 'Travel', 'Life'],
       choices: ['Vue.js', 'D3.js', 'CSS Grid', 'Node.js', 'Express', 'RestFul Api', 'Hong Kong'],
-      content: '# Hello',
     };
   },
   computed: {
     compiledMarkdown() {
-      return marked(this.content, { sanitize: true });
+      return marked(this.post.content, { sanitize: true });
     },
+  },
+  created() {
+    this.setPost();
   },
   methods: {
     async submitPost(e) {
       e.preventDefault();
+      const slug = this.$route.params.slug;
       const article = {
         title: $('input[name=title]').value,
-        type: $('input[name=type]').value,
+        type: $$('input[name=type]').filter(input => input.checked === true).map(input => input.value),
         abstract: $('textarea[name=abstract]').value,
         tags: $$('input[name=tags]').filter(input => input.checked === true).map(input => input.value),
-        content: this.content,
+        content: this.post.content,
       };
+      // eslint-disable-next-line
+      console.log(article);
       try {
-        await ArticleService.createArticle(article);
+        if (!slug) {
+          await ArticleService.createArticle(article);
+        } else {
+          await ArticleService.updateArticle(article, slug);
+        }
+        await this.$store.dispatch('getArticles');
         this.$router.push({
           name: 'Articles',
         });
       } catch (error) {
         this.error = error.response.data.error;
       }
+    },
+    async setPost() {
+      const slug = this.$route.params.slug;
+      if (!slug) return;
+      let articles = this.$store.state.articles;
+      if (articles.length === 0) {
+        await this.$store.dispatch('getArticles');
+        articles = this.$store.state.articles;
+      }
+      this.post = articles.filter(article => article.slug === slug)[0];
     },
   },
 };

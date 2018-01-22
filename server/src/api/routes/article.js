@@ -15,4 +15,11 @@ router.post(
   catchErrors(articleController.createArticle),
 );
 
+router.patch(
+  '/edit/:slug',
+  checkAuth,
+  uploadImage.single('Image'),
+  catchErrors(articleController.updateArticle),
+);
+
 module.exports = router;

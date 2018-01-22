@@ -29,3 +29,18 @@ exports.createArticle = async (req, res) => {
   res.status(200).json({ article });
 };
 
+exports.updateArticle = async (req, res) => {
+  const { slug } = req.params;
+  const Image = (req.file && req.file.path) || '';
+  const {
+    title, content, type, tags, abstract,
+  } = req.body;
+  const updateOptions = {
+    title, content, type, tags, abstract, Image,
+  };
+  await Article.update({ slug }, { $set: updateOptions });
+  res.status(200).json({
+    message: 'Update successfully',
+  });
+};
+

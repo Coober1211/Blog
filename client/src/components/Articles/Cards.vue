@@ -10,6 +10,9 @@
         <div class="title">
           <router-link :to="a.slug" append>{{a.title}}</router-link>
         </div>
+        <div class="icons" v-if="$store.state.isUserLoggedIn">
+          <router-link :to="{name: 'Edit', params: {slug: a.slug}}" append>Edit</router-link>
+        </div>
         <div class="date">{{handleTime(a.created)}}</div>
         <div class="description">{{a.abstract}}</div>
         <div class="tags">
@@ -101,6 +104,14 @@ export default {
   border-bottom: 0px;
   text-decoration: none;
   color: darken($color: #58B2DC, $amount: 10);
+}
+
+.icons {
+  grid-column: 3;
+  grid-row: 1;
+  justify-items: end;
+  text-align: right;
+  z-index: 10;
 }
 
 .date {

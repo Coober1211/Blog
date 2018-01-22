@@ -7,4 +7,7 @@ export default {
   createArticle(article) {
     return Api().post('article', article);
   },
+  updateArticle(article, slug) {
+    return Api().patch(`article/edit/${slug}`, article);
+  },
 };
