@@ -15,8 +15,15 @@ html, body {
   // font-family: 'Ovo', serif;
 }
 .wrapper {
-  min-height: 90vh;
-  margin-top: 10vh;
+  min-height: 80vh;
+  margin-top: 20vh;
+}
+
+@media (min-width: 700px) {
+  .wrapper {
+    min-height: 90vh;
+    margin-top: 10vh;
+  }
 }
 
 .post-content {

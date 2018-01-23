@@ -21,6 +21,7 @@ export default {
 .info {
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 5px;
 }
 
@@ -29,8 +30,6 @@ export default {
   background-size: cover;
   width: 150px;
   height: 150px;
-  margin-left: 50%;
-  transform: translateX(-50%);
   border: solid 2px #58B2DC;
   opacity: 0.9;
   border-radius: 50%;
@@ -38,9 +37,7 @@ export default {
 
 h2 {
   display: inline-block;
-  margin-left: 50%;
   margin-bottom: 0;
-  transform: translateX(-45%);
   color: #F7C242;
 }
 

@@ -50,23 +50,10 @@ export default {
 
 .main {
   font-family: 'Ovo', serif;
-  margin: 10vh 20px 0 20px;
+  margin: 25vh 20px 0 20px;
   height: 80vh;
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-column-gap: 20px;
-}
-
-.sidebar {
-  grid-column: 1;
-}
-
-.skill {
-  text-align: center;
-}
-
-.content {
-  grid-column: 2;
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
@@ -74,6 +61,27 @@ export default {
   color: #58B2DC;
   text-shadow: 1px 1px #FFF;
   letter-spacing: 1px;
+}
+
+@media (min-width: 700px) {
+  .main {
+  margin: 10vh 20px 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-column-gap: 20px;
+  }
+
+  .sidebar {
+    grid-column: 1;
+  }
+
+  .skill {
+    text-align: center;
+  }
+
+  .content {
+    grid-column: 2;
+  }
 }
 </style>
 
