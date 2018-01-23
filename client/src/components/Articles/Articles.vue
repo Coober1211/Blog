@@ -31,20 +31,34 @@ export default {
 
 <style lang="scss" scoped>
 .main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  font-family: 'Ovo', serif;
+}
+
+
+.cards {
+  user-select: none;
+}
+
+@media (min-width: 1000px) {
+  .main {
   display: grid;
   grid-template-columns: 2fr 6fr 2fr;
   grid-row-gap: 10px;
   font-family: 'Ovo', serif;
-}
+  }
 
-.searchBar {
-  grid-column: 2;
-  max-width: 300px;
-  justify-self: center;
-}
+  .searchBar {
+    grid-column: 2;
+    max-width: 300px;
+    justify-self: center;
+  }
 
-.cards {
-  grid-column: 2;
-  user-select: none;
+  .cards {
+    grid-column: 2;
+    user-select: none;
+  }
 }
 </style>

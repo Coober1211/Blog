@@ -65,12 +65,12 @@ export default {
 }
 
 .hero {
-  grid-column: 2/6;
+  grid-column: 1/7;
 }
 
 .title {
-  grid-column: 2/5;
-  font-size: 80px;
+  grid-column: 1/4;
+  font-size: 60px;
   letter-spacing: 1px;
   transform: skew(0deg, -3deg);
   font-weight: bold;
@@ -86,8 +86,8 @@ export default {
 }
 
 .date {
-  grid-column: 3;
-  font-size: 24px;
+  grid-column: 4/6;
+  font-size: 14px;
   justify-self: end;
   align-self: end;
   font-style: italic;
@@ -97,8 +97,8 @@ export default {
 }
 
 .tags {
-  grid-column: -3;
-  font-size: 24px;
+  grid-column: -2;
+  font-size: 14px;
   justify-self: end;
   align-self: end;
   list-style: none;
@@ -120,8 +120,35 @@ export default {
 }
 
 .post-content {
-  grid-column: 2/6;
+  grid-column: 1/7;
   padding: 20px;
+}
+
+@media (min-width: 700px) {
+  .hero {
+    grid-column: 2/6;
+  }
+
+  .title {
+    grid-column: 2/5;
+    font-size: 80px;
+  }
+
+  .date {
+    grid-column: 3;
+    font-size: 24px;
+  }
+
+  .tags {
+    grid-column: -3;
+    font-size: 24px;
+  }
+
+  .post-content {
+    grid-column: 2/6;
+    padding: 20px;
+  }
+
 }
 
 </style>

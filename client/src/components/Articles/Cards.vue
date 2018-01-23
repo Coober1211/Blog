@@ -42,23 +42,13 @@ export default {
 <style lang="scss" scoped>
 .card {
   display: grid;
+  grid-template-rows: 1fr 2fr;
+  grid-template-areas: 
+    "image"
+    "info";
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
-}
-
-.card:nth-child(odd) {
-  grid-template-columns: 1fr 3fr;
-  grid-template-areas: "image info";
-  transform: perspective(100px) rotateX(-1deg) translateY(5px);
-  background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
-}
-
-.card:nth-child(even) {
-  grid-template-columns: 3fr 1fr;
-  grid-template-areas: "info image";
-  transform: perspective(100px) rotateX(1deg) translateY(1px) scale(1.001);
-  background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 100%);
 }
 
 .img-box {
@@ -69,7 +59,7 @@ export default {
 }
 
 #img {
-  width: 190px;
+  width: 200px;
   height: 100px;
   border-radius: 3px;
   opacity: 0.7;
@@ -150,6 +140,37 @@ export default {
   display: flex;
   padding-left: 10px;
   clip-path: polygon(10px 0%, 100% 1%, 100% 100%, 10px 100%, 0% 50%);
+}
+
+@media (min-width: 700px) {
+  .card {
+    display: grid;
+    grid-template-rows: 1fr;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
+  }
+
+  .card:nth-child(odd) {
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: "image info";
+    transform: perspective(100px) rotateX(-1deg) translateY(5px);
+    background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
+  }
+
+  .card:nth-child(even) {
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: "info image";
+    transform: perspective(100px) rotateX(1deg) translateY(1px) scale(1.001);
+    background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 100%);
+  }
+  #img {
+    width: 190px;
+    height: 100px;
+    border-radius: 3px;
+    opacity: 0.7;
+    background-size: cover;
+  }
 }
 
 
